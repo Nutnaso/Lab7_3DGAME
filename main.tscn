@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://chbb4gqegvcmf" path="res://art/Grass.glb" id="5_5vw27"]
 [ext_resource type="Script" uid="uid://b2eu02bf2r1n2" path="res://score_label.gd" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://dr5cncd0855t3" path="res://art/Gravestone Cross.glb" id="6_kek77"]
-[ext_resource type="AudioStream" uid="uid://cra2o0mrqvuhe" path="res://TDF.mp3" id="10_4c57u"]
 [ext_resource type="Texture2D" uid="uid://nrspul1b8765" path="res://istockphoto-1483370144-612x612.jpg" id="10_efxa6"]
+[ext_resource type="AudioStream" uid="uid://j30silvtrndw" path="res://P3.wav" id="11_efxa6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4c57u"]
 sky_top_color = Color(1, 0.759602, 0.720143, 1)
@@ -126,6 +126,11 @@ light_energy = 0.5
 light_indirect_energy = 10.0
 
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]
+
+[node name="Marker3D" type="Marker3D" parent="Player"]
+
+[node name="Camera3D" type="Camera3D" parent="Player/Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 0.909961, 0.414693, 0, -0.414693, 0.909961, 0, 10, 12)
 
 [node name="Marker3D" type="Marker3D" parent="."]
 
@@ -244,7 +249,7 @@ text = "ห้ามให้ค่าสติเหลือ 0 โดยเด
 horizontal_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_4c57u")
+stream = ExtResource("11_efxa6")
 volume_db = -8.479
 
 [connection signal="die" from="Player" to="UserInterface/ScoreLabel" method="_on_player_die"]

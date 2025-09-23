@@ -10,10 +10,9 @@ config_version=5
 
 [application]
 
-config/name="Squash the Creeps (3D)"
+config/name="RealmOFDestruction"
 run/main_scene="uid://be0gt034du6va"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.png"
 
 [display]
 

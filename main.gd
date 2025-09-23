@@ -2,7 +2,7 @@ extends Node3D
 
 # -------------------------------
 # Export Variables
-@export var BPM: float = 188
+@export var BPM: float = 225
 @export var beats_per_bar: int = 4
 @export var mob_scene: PackedScene
 @onready var player = $Player
