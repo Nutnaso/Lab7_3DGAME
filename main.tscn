@@ -1,0 +1,253 @@
+[gd_scene load_steps=23 format=3 uid="uid://be0gt034du6va"]
+
+[ext_resource type="Script" uid="uid://dykek5eexefpe" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://btpjf5kb1sy1o" path="res://player.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cnc1aa5qecjpq" path="res://mob.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://tn34lc8r2ap5" path="res://art/Dead Trees.glb" id="3_7mycd"]
+[ext_resource type="FontFile" uid="uid://u5l3ovc1lxde" path="res://art/paaymaay_regular.ttf" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://c2phk5664xga" path="res://art/Glub Evolved.glb" id="4_272bh"]
+[ext_resource type="PackedScene" uid="uid://chbb4gqegvcmf" path="res://art/Grass.glb" id="5_5vw27"]
+[ext_resource type="Script" uid="uid://b2eu02bf2r1n2" path="res://score_label.gd" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dr5cncd0855t3" path="res://art/Gravestone Cross.glb" id="6_kek77"]
+[ext_resource type="AudioStream" uid="uid://cra2o0mrqvuhe" path="res://TDF.mp3" id="10_4c57u"]
+[ext_resource type="Texture2D" uid="uid://nrspul1b8765" path="res://istockphoto-1483370144-612x612.jpg" id="10_efxa6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4c57u"]
+sky_top_color = Color(1, 0.759602, 0.720143, 1)
+sky_horizon_color = Color(1, 0, 0, 1)
+sky_energy_multiplier = 0.2
+sky_cover_modulate = Color(0.559288, 0, 0.145707, 1)
+ground_bottom_color = Color(0.870834, 0.0961904, 9.62615e-08, 1)
+ground_horizon_color = Color(0.670588, 0, 0.101961, 1)
+
+[sub_resource type="Sky" id="Sky_efxa6"]
+sky_material = SubResource("ProceduralSkyMaterial_4c57u")
+
+[sub_resource type="Environment" id="Environment_dg77c"]
+background_mode = 2
+sky = SubResource("Sky_efxa6")
+tonemap_mode = 1
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ig7tw"]
+size = Vector3(160, 0.5, 160)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4c57u"]
+albedo_color = Color(0.273125, 0.115061, 6.61798e-07, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7dm0k"]
+material = SubResource("StandardMaterial3D_4c57u")
+size = Vector3(160, 0.5, 160)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efxa6"]
+albedo_color = Color(1, 0.646533, 0.475065, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dg77c"]
+material = SubResource("StandardMaterial3D_efxa6")
+size = Vector3(24, 0.5, 25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0xm2m"]
+material = SubResource("StandardMaterial3D_0xm2m")
+
+[sub_resource type="Curve3D" id="Curve3D_h2yge"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -16.0859, 0, -21.1104, 0, 0, 0, 0, 0, 0, 16.5456, 0, -20.428, 0, 0, 0, 0, 0, 0, 15.8893, -0.526722, 0.828176, 0, 0, 0, 0, 0, 0, 16.8223, -0.138987, -20.3248, 0, 0, 0, 0, 0, 0, -16.0418, 0.723427, -20.2743, 0, 0, 0, 0, 0, 0, -16.6297, -0.60479, -0.57407),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_0xm2m")
+mob_scene = ExtResource("2_h2yge")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dg77c")
+
+[node name="MainFloor" type="Node3D" parent="."]
+
+[node name="Floor" type="StaticBody3D" parent="MainFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainFloor/Floor"]
+shape = SubResource("BoxShape3D_ig7tw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MainFloor/Floor"]
+mesh = SubResource("BoxMesh_7dm0k")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MainFloor/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 5)
+mesh = SubResource("BoxMesh_dg77c")
+
+[node name="Root Scene" parent="MainFloor" instance=ExtResource("3_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 0, 9)
+
+[node name="Root Scene2" parent="MainFloor" instance=ExtResource("3_7mycd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12, -1, 51)
+
+[node name="Root Scene3" parent="MainFloor" instance=ExtResource("3_7mycd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.1323, -1, 51)
+
+[node name="Boss" parent="MainFloor" instance=ExtResource("4_272bh")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -1, -10)
+visible = false
+
+[node name="Grass" parent="MainFloor" instance=ExtResource("5_5vw27")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -41, -1, -41)
+
+[node name="Grass2" parent="MainFloor" instance=ExtResource("5_5vw27")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 35, -1, -41)
+
+[node name="Grass3" parent="MainFloor" instance=ExtResource("5_5vw27")]
+transform = Transform3D(-6.77476, 0, 18.8176, 0, 20, 0, -18.8176, 0, -6.77476, -1, -1, -41)
+
+[node name="Grass4" parent="MainFloor" instance=ExtResource("5_5vw27")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -41, -1, -15)
+
+[node name="Grass5" parent="MainFloor" instance=ExtResource("5_5vw27")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 39, -1, -17)
+
+[node name="Gravestone Cross" parent="MainFloor" instance=ExtResource("6_kek77")]
+transform = Transform3D(5.78064, 0, 19.1464, 0, 20, 0, -19.1464, 0, 5.78064, -12, 0, -14)
+
+[node name="Gravestone Cross2" parent="MainFloor" instance=ExtResource("6_kek77")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 12, 0, -14)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.697165, -0.716911, 0, 0.716911, -0.697165, 0, 50, 1.07324e-07)
+light_color = Color(1, 0, 0, 1)
+light_energy = 0.5
+light_indirect_energy = 10.0
+
+[node name="Player" parent="." instance=ExtResource("2_0xm2m")]
+
+[node name="Marker3D" type="Marker3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 0.909961, 0.414693, 0, -0.414693, 0.909961, 0, 10, 12)
+
+[node name="Cylinders" type="Node3D" parent="."]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 9)
+mesh = SubResource("CylinderMesh_0xm2m")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -9)
+mesh = SubResource("CylinderMesh_0xm2m")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 9)
+mesh = SubResource("CylinderMesh_0xm2m")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -9)
+mesh = SubResource("CylinderMesh_0xm2m")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="SpawnPath" type="Path3D" parent="."]
+curve = SubResource("Curve3D_h2yge")
+
+[node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
+transform = Transform3D(-0.0209074, 0, -0.999762, 0, 1, 0, 0.999762, 0, -0.0209074, -16.0859, 0, -21.1104)
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="UserInterface" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="UserInterface"]
+offset_left = 20.0
+offset_top = 62.0
+offset_right = 327.0
+offset_bottom = 123.0
+theme_override_fonts/font = ExtResource("4_1bvp3")
+theme_override_font_sizes/font_size = 80
+text = "Sanity : 10"
+script = ExtResource("5_lquwl")
+player_scene = ExtResource("2_0xm2m")
+
+[node name="Name" type="Label" parent="UserInterface"]
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 502.0
+offset_bottom = 51.0
+theme_override_fonts/font = ExtResource("4_1bvp3")
+theme_override_font_sizes/font_size = 50
+text = "663380295-8 นายศุภณัฐ ไตรรัตน์"
+
+[node name="Win" type="CanvasLayer" parent="UserInterface"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="UserInterface/Win"]
+offset_left = -18.0
+offset_top = -11.0
+offset_right = 1294.0
+offset_bottom = 741.0
+color = Color(0, 0.784314, 0.419608, 0.282353)
+
+[node name="Win" type="Label" parent="UserInterface/Win"]
+offset_left = 375.0
+offset_top = 85.0
+offset_right = 853.0
+offset_bottom = 212.0
+theme_override_fonts/font = ExtResource("4_1bvp3")
+theme_override_font_sizes/font_size = 180
+text = "YOU WIN"
+
+[node name="Istockphoto-1483370144-612x612" type="Sprite2D" parent="UserInterface/Win"]
+position = Vector2(610, 385)
+scale = Vector2(0.79085, 0.757683)
+texture = ExtResource("10_efxa6")
+
+[node name="Tutorial" type="CanvasLayer" parent="UserInterface"]
+visible = false
+
+[node name="Win" type="Label" parent="UserInterface/Tutorial"]
+offset_left = 49.0
+offset_top = 149.0
+offset_right = 1242.0
+offset_bottom = 536.0
+theme_override_fonts/font = ExtResource("4_1bvp3")
+theme_override_font_sizes/font_size = 50
+text = "W D S A เพื่อขยับ
+Shift เพื่อ Dash
+Space Bar เพื่อ กระโดด
+
+ในระหว่าง dash และกระโดดจะมีโล่ที่ใช้ขจัดผีร้ายได้
+
+เมื่อกำจัดได้ จะเพิ่มค่าสติ
+
+"
+horizontal_alignment = 1
+
+[node name="Win2" type="Label" parent="UserInterface/Tutorial"]
+offset_left = 53.0
+offset_top = 453.0
+offset_right = 1246.0
+offset_bottom = 840.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_1bvp3")
+theme_override_font_sizes/font_size = 50
+text = "ห้ามให้ค่าสติเหลือ 0 โดยเด็ดขาด"
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_4c57u")
+volume_db = -8.479
+
+[connection signal="die" from="Player" to="UserInterface/ScoreLabel" method="_on_player_die"]
+[connection signal="hit" from="Player" to="." method="_on_player_hit"]
+[connection signal="hit" from="Player" to="UserInterface/ScoreLabel" method="_on_player_hit"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

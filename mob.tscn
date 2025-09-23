@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnc1aa5qecjpq"]
+
+[ext_resource type="PackedScene" uid="uid://dvbhbcdj37y8o" path="res://art/Ghost Skull.glb" id="1_dy6sc"]
+[ext_resource type="Script" uid="uid://bvtcg3bw7lpuk" path="res://mob.gd" id="1_nokgg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nokgg"]
+radius = 1.01199
+height = 3.27884
+
+[node name="Mob" type="CharacterBody3D" groups=["Mobs"]]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_nokgg")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Root Scene" parent="Pivot" instance=ExtResource("1_dy6sc")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0530462, 0.165413, -0.00960088)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51839, 0.172068)
+shape = SubResource("CapsuleShape3D_nokgg")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7246, 0)
+aabb = AABB(-1.74467, -1.82875, -1.30757, 3.48934, 3.6575, 2.61513)
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 8.0
+autostart = true
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

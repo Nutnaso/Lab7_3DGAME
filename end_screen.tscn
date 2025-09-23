@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://bkdcowa2dthjl"]
+
+[ext_resource type="PackedScene" uid="uid://tn34lc8r2ap5" path="res://art/Dead Trees.glb" id="1_my301"]
+[ext_resource type="Script" uid="uid://6617gk4g26er" path="res://end_screen.gd" id="1_pmjk2"]
+[ext_resource type="FontFile" uid="uid://u5l3ovc1lxde" path="res://art/paaymaay_regular.ttf" id="2_xu7hh"]
+[ext_resource type="Texture2D" uid="uid://co41whbgxu0c0" path="res://art/D9771767-0.jpg" id="3_pmjk2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xu7hh"]
+sky_top_color = Color(1, 0, 0.054902, 1)
+sky_horizon_color = Color(0.648383, 0.271757, 0.292044, 1)
+ground_bottom_color = Color(0.506502, 0, 0.0262465, 1)
+ground_horizon_color = Color(0.648383, 0.271757, 0.292044, 1)
+
+[sub_resource type="Sky" id="Sky_pmjk2"]
+sky_material = SubResource("ProceduralSkyMaterial_xu7hh")
+
+[sub_resource type="Environment" id="Environment_d75mr"]
+background_mode = 2
+sky = SubResource("Sky_pmjk2")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="EndScreen" type="Node3D"]
+script = ExtResource("1_pmjk2")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_d75mr")
+
+[node name="Root Scene" parent="." instance=ExtResource("1_my301")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.0261, 0, -0.145297)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.91027, 5.05048)
+fov = 86.1896
+
+[node name="Label" type="Label" parent="."]
+offset_left = 255.0
+offset_top = 45.0
+offset_right = 1010.0
+offset_bottom = 305.0
+theme_override_fonts/font = ExtResource("2_xu7hh")
+theme_override_font_sizes/font_size = 80
+text = "You die
+กลายเป็นเป็ดน้ำแดง
+"
+horizontal_alignment = 1
+
+[node name="D9771767-0" type="Sprite2D" parent="."]
+position = Vector2(637, 342)
+scale = Vector2(0.646774, 0.616327)
+texture = ExtResource("3_pmjk2")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 332.0
+offset_top = 514.0
+offset_right = 910.0
+offset_bottom = 678.0
+theme_override_fonts/font = ExtResource("2_xu7hh")
+theme_override_font_sizes/font_size = 50
+text = "Retry"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
