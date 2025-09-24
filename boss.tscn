@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://xk2ndp3xh4pw"]
+
+[ext_resource type="PackedScene" uid="uid://dqchicss4s4ju" path="res://art/new model/eye.glb" id="1_6xxrv"]
+[ext_resource type="PackedScene" uid="uid://nyifsulngrv3" path="res://art/new model/Bat wing.glb" id="2_skx2t"]
+[ext_resource type="PackedScene" uid="uid://ctncs4k5h24wr" path="res://art/new model/Halo.glb" id="3_skx2t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lnbgr"]
+
+[node name="Boss" type="Node3D"]
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+visible = false
+radius = 1.19475
+material = SubResource("StandardMaterial3D_lnbgr")
+
+[node name="pivot" type="Node3D" parent="."]
+transform = Transform3D(0.116775, 0, -0.993158, 0, 1, 0, 0.993158, 0, 0.116775, 0, 0, 0)
+
+[node name="eye" parent="pivot" instance=ExtResource("1_6xxrv")]
+transform = Transform3D(2.87136, -3.97501, -0.977023, -3.88816, -2.27553, -2.16891, 1.27964, 2.00531, -4.39787, 0, 0, 0)
+
+[node name="Bat wing" parent="pivot" instance=ExtResource("2_skx2t")]
+transform = Transform3D(-0.0120198, 0, -0.124421, 0, 0.125, 0, 0.124421, 0, -0.0120198, 0.057768, -0.164397, 0.012158)
+
+[node name="Bat wing2" parent="pivot" instance=ExtResource("2_skx2t")]
+transform = Transform3D(-0.00961584, 0, -0.0995366, 0, 0.1, 0, 0.0995366, 0, -0.00961584, 0.057768, 0.01352, 0.012158)
+
+[node name="Bat wing3" parent="pivot" instance=ExtResource("2_skx2t")]
+transform = Transform3D(-0.00961584, 0, -0.0995366, 0, 0.1, 0, 0.0995366, 0, -0.00961584, 0.057768, -0.316776, 0.012158)
+
+[node name="Halo" parent="pivot" instance=ExtResource("3_skx2t")]
+transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 0, 0.342684, 0)

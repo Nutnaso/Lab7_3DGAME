@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://bvtcg3bw7lpuk" path="res://mob.gd" id="1_nokgg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nokgg"]
-radius = 1.01199
-height = 3.27884
+radius = 4.18593
+height = 27.9905
 
 [node name="Mob" type="CharacterBody3D" groups=["Mobs"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

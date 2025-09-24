@@ -10,17 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://dr5cncd0855t3" path="res://art/Gravestone Cross.glb" id="6_kek77"]
 [ext_resource type="PackedScene" uid="uid://bwvcvf5bmlvxl" path="res://art/new model/Statue.glb" id="6_w48qg"]
 [ext_resource type="PackedScene" uid="uid://chbb4gqegvcmf" path="res://art/Grass.glb" id="7_vivmo"]
+[ext_resource type="Texture2D" uid="uid://nrspul1b8765" path="res://istockphoto-1483370144-612x612.jpg" id="10_efxa6"]
 [ext_resource type="AudioStream" uid="uid://j30silvtrndw" path="res://P3.wav" id="11_efxa6"]
-[ext_resource type="Texture2D" uid="uid://d4adn3ixc3luw" path="res://art/new model/Bat 2.png" id="12_w48qg"]
 [ext_resource type="PackedScene" uid="uid://xk2ndp3xh4pw" path="res://boss.tscn" id="13_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://cag28c6grh7p6" path="res://pillar.tscn" id="14_w48qg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4c57u"]
-sky_top_color = Color(0.812724, 0.847061, 0.89504, 1)
-sky_horizon_color = Color(0, 0, 0, 1)
 sky_energy_multiplier = 0.2
-ground_bottom_color = Color(0.733333, 0.0862745, 0.0901961, 1)
-ground_horizon_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Sky" id="Sky_efxa6"]
 sky_material = SubResource("ProceduralSkyMaterial_4c57u")
@@ -48,7 +44,7 @@ material = SubResource("StandardMaterial3D_0xm2m")
 [sub_resource type="Curve3D" id="Curve3D_h2yge"]
 closed = true
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 15.4877, -0.128517, -11.0755, 0, 0, 0, 0, 0, 0, -30.9517, -0.169501, -11.5003, 0, 0, 0, 0, 0, 0, 43.3651, -0.169501, -5.22694, 0, 0, 0, 0, 0, 0, 55.6044, 0.174603, -18.8393, 0, 0, 0, 0, 0, 0, -51.207, -0.4736, -20.2743, 0, 0, 0, 0, 0, 0, -44.0027, -0.128517, -0.574108),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -16.0859, 0, -21.1104, 0, 0, 0, 0, 0, 0, 16.5456, 0, -20.428, 0, 0, 0, 0, 0, 0, 15.8893, -0.526722, 0.828176, 0, 0, 0, 0, 0, 0, 16.8223, -0.138987, -20.3248, 0, 0, 0, 0, 0, 0, -16.0418, 0.723427, -20.2743, 0, 0, 0, 0, 0, 0, -16.6297, -0.60479, -0.57407),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
 point_count = 6
@@ -89,12 +85,7 @@ transform = Transform3D(48.0487, 2.49581, 13.6048, 9.54586, 29.6066, -39.145, -1
 transform = Transform3D(-0.258731, -0.343741, -0.902718, -0.619927, 0.775778, -0.117725, 0.740776, 0.52916, -0.413812, 55.4924, 11.4186, -49.3809)
 
 [node name="Statue1" parent="MainFloor" instance=ExtResource("6_w48qg")]
-transform = Transform3D(13.9336, 0, 48.0193, 0, 50, 0, -48.0193, 0, 13.9336, -123.866, -21.9525, -170.47)
-visible = false
-
-[node name="Statue2" parent="MainFloor" instance=ExtResource("6_w48qg")]
-transform = Transform3D(-0.0541053, 0, -50, 0, 50, 0, 50, 0, -0.0541053, 126.654, -21.9525, -172.898)
-visible = false
+transform = Transform3D(13.9336, 0, 48.0193, 0, 50, 0, -48.0193, 0, 13.9336, -123.866, 37.2687, -170.47)
 
 [node name="Root Scene2" parent="MainFloor" instance=ExtResource("7_vivmo")]
 transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -178.653, -19.098, -120.188)
@@ -113,6 +104,9 @@ transform = Transform3D(-0.343648, -0.416322, -0.841773, -0.477023, 0.849496, -0
 
 [node name="Epic Sax2" parent="MainFloor" instance=ExtResource("4_dg77c")]
 transform = Transform3D(17.2007, -40.1394, -24.3509, -46.9327, -14.0331, -10.0198, 1.20943, 26.304, -42.5046, 122.003, 16.16, -72.9851)
+
+[node name="Statue2" parent="MainFloor" instance=ExtResource("6_w48qg")]
+transform = Transform3D(-0.0541053, 0, -50, 0, 50, 0, 50, 0, -0.0541053, 126.654, 37.2687, -172.898)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.697165, -0.716911, 0, 0.716911, -0.697165, 0, 50, 1.07324e-07)
@@ -159,7 +153,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -26.501)
 curve = SubResource("Curve3D_h2yge")
 
 [node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
-transform = Transform3D(0.00914685, -0.000882449, 0.999932, 5.8206e-11, 0.999992, 0.000882469, -0.999929, -8.07214e-06, 0.00914687, 15.4877, -0.128517, -11.0755)
+transform = Transform3D(-0.0209074, 0, -0.999762, 0, 1, 0, 0.999762, 0, -0.0209074, -16.0859, 0, -21.1104)
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -198,18 +192,18 @@ offset_bottom = 741.0
 color = Color(0, 0.784314, 0.419608, 0.282353)
 
 [node name="Win" type="Label" parent="UserInterface/Win"]
-offset_left = 256.0
-offset_top = 149.0
-offset_right = 986.0
-offset_bottom = 276.0
+offset_left = 375.0
+offset_top = 85.0
+offset_right = 853.0
+offset_bottom = 212.0
 theme_override_fonts/font = ExtResource("4_1bvp3")
 theme_override_font_sizes/font_size = 180
-text = "ขอบคุณที่รับฟัง"
+text = "YOU WIN"
 
-[node name="Bat2" type="Sprite2D" parent="UserInterface/Win"]
-position = Vector2(643, 415)
-scale = Vector2(0.31713, 0.31713)
-texture = ExtResource("12_w48qg")
+[node name="Istockphoto-1483370144-612x612" type="Sprite2D" parent="UserInterface/Win"]
+position = Vector2(610, 385)
+scale = Vector2(0.79085, 0.757683)
+texture = ExtResource("10_efxa6")
 
 [node name="Tutorial" type="CanvasLayer" parent="UserInterface"]
 visible = false
@@ -244,27 +238,12 @@ theme_override_font_sizes/font_size = 50
 text = "ห้ามให้ค่าสติเหลือ 0 โดยเด็ดขาด"
 horizontal_alignment = 1
 
-[node name="Dialog" type="CanvasLayer" parent="UserInterface"]
-
-[node name="Dialog_label" type="Label" parent="UserInterface/Dialog"]
-offset_left = 637.0
-offset_top = 67.0
-offset_right = 1271.0
-offset_bottom = 121.0
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("4_1bvp3")
-theme_override_font_sizes/font_size = 50
-text = "Test"
-horizontal_alignment = 1
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_efxa6")
 volume_db = -8.479
 
 [node name="Boss" parent="." instance=ExtResource("13_ycdy4")]
 transform = Transform3D(-6.60378, 0, 79.727, 0, 80, 0, -79.727, 0, -6.60378, 3.11528, 5.69785, -73.7005)
-visible = false
 
 [connection signal="die" from="Player" to="UserInterface/ScoreLabel" method="_on_player_die"]
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]

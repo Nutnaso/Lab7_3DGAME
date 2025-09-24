@@ -18,7 +18,7 @@ signal die                # ส่งเมื่อ Player ตาย
 @export var blink_threshold: float = 0.2
 @export var blink_speed: float = 0.1
 
-@export var max_health: int = 1
+@export var max_health: int = 10
 var current_health: int
 
 # -------------------------------
@@ -32,7 +32,7 @@ var is_iframe: bool = false
 var iframe_timer: float = 0.0
 var blink_timer: float = 0.0
 
-@onready var barrier = $"Pivot/Mallard duck/Barrier"
+@onready var barrier = $"Pivot/swat/Barrier"
 
 # -------------------------------
 func _ready() -> void:
@@ -86,9 +86,15 @@ func _physics_process(delta: float) -> void:
 	velocity = target_velocity + dash_velocity
 	move_and_slide()
 
+	# 🎬 Animation: Run / Idle
+	if direction != Vector3.ZERO:
+		$Pivot/swat/AnimationPlayer.play("CharacterArmature|Run")
+	else:
+		$Pivot/swat/AnimationPlayer.play("CharacterArmature|Idle")
+
 	# **จำกัดตำแหน่ง Player ให้อยู่ในขอบเขต 1280x720**
-	var half_width = 1.777777 * 6.5
-	var half_height = 1 * 6.5
+	var half_width = 1.777777 * 28
+	var half_height = 1 * 5
 	position.x = clamp(position.x, -half_width, half_width)
 	position.z = clamp(position.z, -half_height, half_height)
 
@@ -97,6 +103,7 @@ func _physics_process(delta: float) -> void:
 
 	# Collision check
 	_check_collisions()
+
 
 
 # -------------------------------

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bvm3lpjgv337x" path="res://art/player.glb" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://d2m70r4o6b73b" path="res://player.gd" id="1_onrkg"]
-[ext_resource type="PackedScene" uid="uid://ci4e25yhixs7v" path="res://art/Mallard duck.glb" id="3_i3pqv"]
+[ext_resource type="PackedScene" uid="uid://cdvchw7mfu7wq" path="res://art/new model/SWAT.glb" id="3_i3pqv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i3pqv"]
 albedo_color = Color(1, 1, 0, 0)
@@ -14,11 +14,11 @@ height = 3.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
 radius = 0.481928
-height = 1.47633
+height = 1.50539
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i3pqv"]
-radius = 1.24541
-height = 2.89971
+radius = 1.45582
+height = 2.91163
 
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 6
@@ -29,16 +29,17 @@ script = ExtResource("1_onrkg")
 [node name="Character" parent="Pivot" instance=ExtResource("1_4flbx")]
 visible = false
 
-[node name="Mallard duck" parent="Pivot" instance=ExtResource("3_i3pqv")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+[node name="swat" parent="Pivot" instance=ExtResource("3_i3pqv")]
+transform = Transform3D(-0.999934, 0, -0.0115014, 0, 1, 0, 0.0115014, 0, -0.999934, 0.00225937, 0, 0.0420273)
 
-[node name="Barrier" type="MeshInstance3D" parent="Pivot/Mallard duck"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.905175, 0)
+[node name="Barrier" type="MeshInstance3D" parent="Pivot/swat"]
+transform = Transform3D(0.999934, 0, -0.0115013, 0, 1, 0, 0.0115013, 0, 0.999934, 0.00305427, 0.905175, -0.0690956)
 visible = false
 mesh = SubResource("SphereMesh_i3pqv")
+skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.998628, 0.00140746, 0.0523519, -0.0523708, 0.026838, 0.998267, 0, -0.999639, 0.0268748, 0.00310023, 0.48584, 0.107367)
+transform = Transform3D(0.758831, 0.000751392, 0.0519127, -0.0397952, 0.0143278, 0.989893, 0, -0.533671, 0.0266493, 0.0110396, 0.48584, 0.000972658)
 shape = SubResource("CapsuleShape3D_4flbx")
 
 [node name="MobDetector" type="Area3D" parent="."]
@@ -46,7 +47,7 @@ collision_mask = 6
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MobDetector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.126613, 1.0808, 0.000123978)
+transform = Transform3D(0.327788, 0, 0, 0, 1, 0, 0, 0, 0.31693, 0.0162989, 1.0808, 0.00806355)
 shape = SubResource("CapsuleShape3D_i3pqv")
 
 [connection signal="body_entered" from="MobDetector" to="." method="_on_mob_detector_body_entered"]

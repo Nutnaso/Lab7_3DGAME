@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcd5w8lib3qaq"]
+
+[ext_resource type="PackedScene" uid="uid://c2phk5664xga" path="res://art/Glub Evolved.glb" id="1_cstt8"]
+
+[node name="Root Scene" instance=ExtResource("1_cstt8")]
