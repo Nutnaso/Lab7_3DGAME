@@ -100,11 +100,11 @@ func _check_bar_events():
 		
 		
 	if current_bar == 21:
-		show_dialog("ขอต้อนรับสู่การแสดงของข้า...", bar_duration*4)
+		show_dialog("ขอต้อนรับสู่ดินแดนแห่งนี้...", bar_duration*4)
 		
 		
 	if current_bar == 25:
-		show_dialog("....และดินแดนแห่งนี้.....", bar_duration*5)
+		show_dialog("....และเตรียมชมการแสดงของข้า.....", bar_duration*5)
 		
 		
 	if current_bar == 30:
@@ -120,7 +120,7 @@ func _check_bar_events():
 		show_dialog("....เพราะว่า..เพราะว่า...", bar_duration*5)
 		
 	if current_bar == 51:
-		show_dialog("....ที่แห่งนี้มันเหมาะกับเสียงของข้าน่ะสิ :) ...", bar_duration*5)
+		show_dialog("....เพราะนี้จะเป็นการบรรเลงครั้งสุดท้ายของข้านะสิ :) ...", bar_duration*7)
 		
 	# -------------------------------
 	# Bar 21 - 37 : กระสุนน้อย 1 per bar
@@ -162,7 +162,7 @@ func _check_bar_events():
 	
 	
 	if current_bar == 87:
-		show_dialog("....ผู้ประสานเสียงจบขับร้อง...", bar_duration*7)
+		show_dialog("....ผู้ประสานเสียงจงขับร้อง...", bar_duration*7)
 	
 	if current_bar == 94:
 		show_dialog("....ท่วงทำนองแห่งการทำลายล้าง...", bar_duration*8)
@@ -201,7 +201,7 @@ func _check_bar_events():
 	# Bar 143 - 149 : กระสุนน้อย 8 per bar
 	if current_bar >= 143 and current_bar < 149:
 		camera_shake(0.2, bar_duration)
-		spawn_mobs_player_track_for_beat([1,1,1,1])
+		spawn_pillar_for_beat([1,1,1,1])
 
 	# Bar 151 - 167 : บทสนทนา
 	if current_bar >= 151 and current_bar < 167:
@@ -213,15 +213,16 @@ func _check_bar_events():
 		show_dialog("....ท่วงทำนองเหล่านี้..ล้วนบรรเลงอย่างดี...", bar_duration*5)
 		
 	if current_bar == 161:
-		show_dialog("....แต่มีเพียงข้าเท่านั้นที่ได้ยิน...", bar_duration*5)
+		show_dialog("....แต่น่าเศร้า เพราะมีเพียงข้าเท่านั้นที่ชอบมัน...", bar_duration*5)
 		
 		
 	if current_bar == 166:
-		show_dialog("....ช่าง...โศกเศร้าเหลือเกิน...", bar_duration*5)
+		show_dialog("....ช่าง...น่าเสียดายเหลือเกิน...", bar_duration*5)
 		
 	# Bar 167 : กระสุนน้อย 8 per bar
 	if current_bar >= 167 and current_bar < 180 :
-		spawn_mobs_player_track_for_beat([4,0,4,0])
+		spawn_pillar_for_beat([2,0,2,0])
+		spawn_mobs_player_track_for_beat([1,0,1,0])
 
 
 	if current_bar >= 167 and current_bar < 180 and current_bar % 2 == 1:
@@ -229,7 +230,7 @@ func _check_bar_events():
 
 
 	if current_bar == 180:
-		show_dialog("....ลาก่อนผู้ชมที่มีเกียรติ ขอบคุณที่รับชม :) ...", bar_duration*5)
+		show_dialog("....เอาเถอะ ลาก่อนผู้ชมที่มีเกียรติทั้งหลาย :) ...", bar_duration*5)
 		
 	# Bar 188 : จบเกม
 	if current_bar == 184:
@@ -237,6 +238,7 @@ func _check_bar_events():
 		switch_to_cutscene_camera()
 		camera_pan_to($Boss.global_transform.origin + Vector3(0, 5, 10), bar_duration*4)
 		$UserInterface/Win.visible = true
+		switch_to_player_camera()
 
 	
 

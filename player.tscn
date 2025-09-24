@@ -17,7 +17,7 @@ radius = 0.481928
 height = 1.50539
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i3pqv"]
-radius = 1.45582
+radius = 1.45581
 height = 2.91163
 
 [node name="Player" type="CharacterBody3D"]

@@ -159,7 +159,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -26.501)
 curve = SubResource("Curve3D_h2yge")
 
 [node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
-transform = Transform3D(0.00914685, -0.000882449, 0.999932, 5.8206e-11, 0.999992, 0.000882469, -0.999929, -8.07214e-06, 0.00914687, 15.4877, -0.128517, -11.0755)
+transform = Transform3D(0.00914685, -0.000882445, 0.999932, 5.8206e-11, 0.999992, 0.000882466, -0.999929, -8.07211e-06, 0.00914687, 15.4877, -0.128517, -11.0755)
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
